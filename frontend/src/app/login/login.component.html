@@ -1,0 +1,39 @@
+<div style="margin-top: 7%; margin-left: 35%; display: flex;">
+  <p-card [style]="{'width': '25rem', 'text-align':'center'}" class="p-col-4" header="Login">
+    <form [formGroup]='loginForm' (click)='login()' style=" border-bottom: 1px solid rgb(221, 221, 221)">
+
+      <!-- username -->
+      <div>
+        <span class="p-float-label p-mb-5 p-mt-5">
+          <input id="float-input-username" class="p-col-12" type="text" pInputText formControlName="username">
+          <label for="float-input">Username</label>
+        </span>
+      </div>
+
+      <div>
+        <!-- password -->
+        <span class="p-float-label p-mb-4 p-mt-4">
+          <input id="float-input-password" class="p-col-12" type="password" pInputText formControlName="password">
+          <label for="float-input">Password</label>
+        </span>
+      </div>
+
+      <!-- login button -->
+      <div>
+        <button pButton type="button" class="p-mb-4 p-mt-2" label="Login"></button>
+      </div>
+
+    </form>
+
+      <!-- forggotten password button -->
+      <div>
+        <button pButton type="button" label="Forgotten password?" class="p-mt-2 p-button-text" (click)='forgotPassword()'></button>
+      </div>
+
+    <!-- create new account button -->
+    <div>
+      <button pButton type="button" class="p-button-success p-col-8 p-mt-1 p-mt-1" label="Create New Account" (click)='createNewAccount()'></button>
+    </div>
+
+  </p-card>
+</div>
