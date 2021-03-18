@@ -11,3 +11,8 @@ export class Profile {
   mobileNo: Number;
   lastLogin: Date;
 }
+
+export class UserLogin {
+  username: String;
+  password: String;
+}

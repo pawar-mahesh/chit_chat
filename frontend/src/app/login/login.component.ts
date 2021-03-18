@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { NavigationEnd, Router } from '@angular/router';
+import { UserLogin } from '../user';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -10,19 +12,36 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private userService: UserService,
+    private fb: FormBuilder,
   ) { }
 
-  loginForm = new FormGroup({
-    username: new FormControl(),
-    password: new FormControl(),
-  });
+  loginForm: FormGroup;
+  userData : UserLogin = new UserLogin();
 
   ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      username: [''],
+      password: ['']
+    })
   }
 
   login(){
-    console.log("clicked on login");
+
+    // set values
+    this.userData.username = this.loginForm.value.username;
+    this.userData.password = this.loginForm.value.password;
+
+    this.userService.login(this.userData).subscribe(
+      (response) => {
+        this.router.navigate(['/home']);
+      },
+
+      (errorResponse) => {
+        console.log("Error: Login Failed");
+      }
+    )
   }
 
   forgotPassword() {

@@ -43,8 +43,7 @@ export class CreateNewAccountComponent implements OnInit {
 
     this.userService.createNewAccount(this.userData).subscribe(
       (response) => {
-        console.log("New user created success");
-        this.router.navigate(['']);
+        this.router.navigate(['/home']);
       },
 
       (errorResponse) => {

@@ -14,19 +14,22 @@ import {ButtonModule} from 'primeng/button';
 import {PanelModule} from 'primeng/panel';
 import { CreateNewAccountComponent } from './create-new-account/create-new-account.component';
 import { RouterModule, Routes } from '@angular/router';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'createNewAccount', component: CreateNewAccountComponent },
+  { path: 'home', component: HomePageComponent },
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CreateNewAccountComponent
+    CreateNewAccountComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
